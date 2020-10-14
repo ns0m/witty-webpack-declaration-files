@@ -1,5 +1,5 @@
 {
-    "name": "@ahrakio/witty-webpack-declaration-files",
+    "name": "@ns0m/witty-webpack-declaration-files",
     "version": "1.0.2",
     "description": "",
     "main": "src/index.js",
@@ -9,14 +9,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ahrakio/witty-webpack-declaration-files.git"
+        "url": "git+https://github.com/ns0m/witty-webpack-declaration-files.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/ahrakio/witty-webpack-declaration-files/issues"
+        "url": "https://github.com/ns0m/witty-webpack-declaration-files/issues"
     },
-    "homepage": "https://github.com/ahrakio/witty-webpack-declaration-files#readme",
+    "homepage": "https://github.com/ns0m/witty-webpack-declaration-files#readme",
     "devDependencies": {}
 }
