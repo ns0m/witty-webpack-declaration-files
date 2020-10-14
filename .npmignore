@@ -3,3 +3,4 @@ webpack.config.js
 /.vscode
 /.gitignore
 /node_modules
+.github/
