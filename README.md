@@ -2,3 +2,8 @@
 ```
 npm install @ns0m/witty-webpack-declaration-files
 ```
+
+---
+
+# witty-webpack-declaration-files
+A webpack plugin for manipulating d.ts files
