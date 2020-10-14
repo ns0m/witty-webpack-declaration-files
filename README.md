@@ -51,3 +51,12 @@ Names of the files to be excluded from the final bundle. Add _"*PartialFileName"
 To put all the declaration files in the root path of the dist folder.
 
 Leaving `merge` as _false_, the plugin will generate only the files in the `include` array, or all the files which are not in the `exclude` array, according to the configuration - but will not merge them into one file.
+
+## Example
+See basic example in `/example`.
+
+(Be careful as this example declares **@ns0m/witty-webpack-declaration-files** dependency through a reference to its own parent file directory, and some IDE end in an infinite loop trying to index dependencies.)
+
+## Versions
+- version **2.x** published from here is made for **Webpack = 4**
+- version _1.x_ from [ahrakio](https://github.com/ahrakio/witty-webpack-declaration-files) should be used for _Webpack < 4_
