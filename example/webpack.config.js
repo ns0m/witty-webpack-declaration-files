@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const DeclarationFilesPlugin = require('@ns0m/witty-webpack-declaration-files');
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -18,5 +19,10 @@ module.exports = {
     },
     resolve: {
         extensions: [ '.ts', '.tsx', '.js' ]
-    }
+    },
+    plugins: [
+        new DeclarationFilesPlugin({
+            merge: true
+        })
+    ]
 };

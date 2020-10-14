@@ -12,9 +12,12 @@ npm i -D @ns0m/witty-webpack-declaration-files
 
 ## Typescript - tsconfig.json
 ```
-{ ...
-    declaration: true,
+{
     ...
+    compilerOptions: {
+        ...
+        declaration: true
+    }
 }
 ```
 
