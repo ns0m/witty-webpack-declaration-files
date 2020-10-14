@@ -1,8 +1,7 @@
-let fs = require("fs");
-let path = require("path");
+const path = require("path");
 
 function DeclarationFilesPlugin(options) {
-    this.name = 'declaration-files-plugin';
+    this.name = "declaration-files-plugin";
 
     this.options = {
         merge: false,
@@ -16,11 +15,10 @@ function DeclarationFilesPlugin(options) {
     Object.assign(this.options, options);
 }
 
-DeclarationFilesPlugin.prototype.apply = function (compiler) {
+DeclarationFilesPlugin.prototype.apply = function(compiler) {
     compiler.hooks.compilation.tap(this.name, (compilation) => {
         if (this.options.path === "") {
             this.options.path = path.resolve(compilation.options.output.path, compilation.options.output.filename, "..");
-        } else {
         }
     });
 
@@ -28,11 +26,8 @@ DeclarationFilesPlugin.prototype.apply = function (compiler) {
         const dtsRegex = /.d.ts$/;
         let assets = Object.keys(compilation.assets).filter((key) => dtsRegex.test(key));
 
-        let included = [];
-        let excluded = [];
-
-
-        
+        let included;
+        let excluded;
 
         if (this.options.include.length > 0) {
             included = assets.filter((key) => this.options.include.indexOf(path.basename(key).split(".d.ts")[0]) !== -1);
@@ -45,17 +40,17 @@ DeclarationFilesPlugin.prototype.apply = function (compiler) {
             excluded = [];
         }
 
-        if(this.options.exclude && this.options.exclude.length){
+        if (this.options.exclude && this.options.exclude.length) {
             this.options.exclude.forEach((value, index) => {
-                if (value.indexOf('*') > -1) {
-                    value = value.replace('*', '')
-                    included = removeMatchedFiles(included, value)
+                if (value.indexOf("*") > -1) {
+                    value = value.replace("*", "");
+                    included = removeMatchedFiles(included, value);
                 }
             });
         }
 
         if (this.options.merge) {
-            let index = included
+            const index = included
                 .map((filename) =>
                     compilation.assets[filename]
                         .source()
@@ -79,7 +74,6 @@ DeclarationFilesPlugin.prototype.apply = function (compiler) {
             });
         }
 
-
         if (this.options.flatten && !this.options.merge) {
             included.forEach((value, index) => {
                 compilation.assets[path.basename(value)] = compilation.assets[value];
@@ -90,20 +84,20 @@ DeclarationFilesPlugin.prototype.apply = function (compiler) {
 };
 
 function removeMatchedFiles(array, match) {
-    const indexes = []
-    array.forEach(function (item, index) {
-         if(typeof item == 'string' && item.indexOf(match) > -1){
-             indexes.push(index)
-         }
+    const indexes = [];
+    array.forEach((item, index) => {
+        if (typeof item === "string" && item.indexOf(match) > -1) {
+            indexes.push(index);
+        }
     });
 
-    if(indexes.length){
-        indexes.forEach(item => {
-            array.splice(item)
-        })
+    if (indexes.length) {
+        indexes.forEach((item, index) => {
+            array.splice(item);
+        });
     }
 
-    return array
+    return array;
 }
 
 module.exports = DeclarationFilesPlugin;
