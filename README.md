@@ -1,20 +1,16 @@
-### Publication-only version of the [ahrakio/witty-webpack-declaration-files](https://github.com/ahrakio/witty-webpack-declaration-files) package. [![Latest Published Version](https://img.shields.io/npm/v/@ns0m/witty-webpack-declaration-files)](https://www.npmjs.com/package/@ns0m/witty-webpack-declaration-files)
-```
-npm install @ns0m/witty-webpack-declaration-files
-```
+### Publication version of the [ahrakio/witty-webpack-declaration-files](https://github.com/ahrakio/witty-webpack-declaration-files) package with some fixes. [![Latest Published Version](https://img.shields.io/npm/v/@ns0m/witty-webpack-declaration-files)](https://www.npmjs.com/package/@ns0m/witty-webpack-declaration-files)
 
 ---
 
 # witty-webpack-declaration-files
 A webpack plugin for manipulating d.ts files
 
-# Configure webpack plugin
 ## Install via npm
 ```
-npm i -D @ahrakio/witty-webpack-declaration-files
+npm i -D @ns0m/witty-webpack-declaration-files
 ```
 
-## Typscript - tsconfig.json
+## Typescript - tsconfig.json
 ```
 { ...
     declaration: true,
@@ -24,7 +20,7 @@ npm i -D @ahrakio/witty-webpack-declaration-files
 
 ## Webpack.config.js
 ```
-const DeclarationFilesPlugin = require("@ahrakio/witty-webpack-declaration-files");
+const DeclarationFilesPlugin = require("@ns0m/witty-webpack-declaration-files");
 ...
 module.exports = {
     ...
@@ -32,23 +28,23 @@ module.exports = {
         ...
         new DeclarationFilesPlugin({
             // options goes here
-             merge:true,
-            exclude:["server","*Routes"],
-            flatten:true
+            merge: true,
+            exclude: ["server", "*Routes"],
+            flatten: true
         })
     ]
 }
 ```
 
 ### Note
-The options are -
+The options are:
+- `merge`: _boolean_ - default: _false_\
+To merge the declaration files into one file.
+- `include`: _string[]_ - default: _[]_\
+Names of the files to be included in the final bundle (without filename extensions ; for _MyClass.ts_ mention _"MyClass"_).
+- `exclude`: _string[]_ - default: _[]_\
+Names of the files to be excluded from the final bundle. Add _"*PartialFileName"_ or _"PartialFileName*"_ to support dynamic filenames to exclude.
+- `flatten`: _boolean_ - default: _false_\
+To put all the declaration files in the root path of the dist folder.
 
-merge: boolean (default: false) - Would you like to merge the declaration files to one file.
-
-include: string[] (default: []) - Name of the files which you would like to be included in the final bundle (Without filename extensions, for MyClass.ts you should mension "MyClass").
-
-exclude: string[] (default: []) - Name of the files which you would like to be excluded from the final bundle. Add *PartialFileName or PartialFileName* to support dynamic filenames to exclude
-
-flatten: boolean (default: false) - If you would like to put all the declaration files in the root path of your dist folder.
-
-Ofcourse, if you leave merge as false, the plugin will generate only the files in the include array, or all the files which are not in the exclude array, according to your configuration - but will not merge them to one file.
+Leaving `merge` as _false_, the plugin will generate only the files in the `include` array, or all the files which are not in the `exclude` array, according to the configuration - but will not merge them into one file.
