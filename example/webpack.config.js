@@ -22,6 +22,7 @@ module.exports = {
     },
     plugins: [
         new DeclarationFilesPlugin({
+            filename: 'main.d.ts',
             merge: true
         })
     ]
